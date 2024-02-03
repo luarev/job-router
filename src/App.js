@@ -1,7 +1,6 @@
 import {
   createBrowserRouter,
   Route,
-  NavLink,
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
@@ -14,6 +13,9 @@ import Contact from "./Pages/Help/Contact";
 import NotFound from "./Pages/NotFound";
 import { careersLoader } from "./Pages/Careers/Careers";
 import Careers from "./Pages/Careers/Careers";
+import CareersDetails, {
+  careerDetailsLoader,
+} from "./Pages/Careers/CareersDetails";
 
 //layouts
 import RootLayout from "./Layouts/RootLayout";
@@ -33,6 +35,11 @@ const router = createBrowserRouter(
 
       <Route path="careers" element={<CareersLayout />}>
         <Route index element={<Careers />} loader={careersLoader} />
+        <Route
+          path=":id"
+          element={<CareersDetails />}
+          loader={careerDetailsLoader}
+        />
       </Route>
 
       <Route path="*" element={<NotFound />} />
